@@ -1,5 +1,5 @@
-import DashboardClient from "./dashboard-client"
+import { DashboardPage } from "@/features/dashboard"
 
-export default function DashboardPage() {
-  return <DashboardClient />
+export default function DashboardPageRoute() {
+  return <DashboardPage />
 }

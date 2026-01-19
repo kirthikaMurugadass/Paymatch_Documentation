@@ -13,8 +13,12 @@ import {
   CardDescription,
   CardContent,
 } from "@/components/ui/card"
+import { useLanguage } from "@/contexts/language-context"
+import { useTranslation } from "@/lib/translations"
 
-export default function DashboardClient() {
+export function DashboardPage() {
+  const { language } = useLanguage()
+  const { t } = useTranslation(language)
   return (
     <div className="space-y-20">
 
@@ -26,11 +30,11 @@ export default function DashboardClient() {
           transition={{ duration: 0.6 }}
           className="text-4xl md:text-5xl font-bold"
         >
-          Admin Dashboard
+          {t("dashboard.title")}
         </motion.h1>
 
         <p className="mt-4 text-muted-foreground text-lg">
-          Overview of system activity, users, and reports
+          {t("dashboard.description")}
         </p>
       </Section>
 
@@ -42,10 +46,10 @@ export default function DashboardClient() {
           <GlassCard>
             <Card className="border-0 bg-transparent">
               <CardHeader>
-                <Users className="h-6 w-6 text-blue-500 mb-2" />
-                <CardTitle>User Management</CardTitle>
+                <Users className="h-6 w-6 text-red-600 dark:text-red-500 mb-2" />
+                <CardTitle>{t("dashboard.userManagement")}</CardTitle>
                 <CardDescription>
-                  Manage users, roles, and permissions
+                  {t("dashboard.userManagementDescription")}
                 </CardDescription>
               </CardHeader>
 
@@ -54,7 +58,7 @@ export default function DashboardClient() {
                   href="/dashboard/users"
                   className="inline-flex items-center gap-1 text-primary font-medium"
                 >
-                  Manage Users
+                  {t("dashboard.manageUsers")}
                   <ArrowRight className="h-4 w-4" />
                 </Link>
               </CardContent>
@@ -65,10 +69,10 @@ export default function DashboardClient() {
           <GlassCard delay={0.2}>
             <Card className="border-0 bg-transparent">
               <CardHeader>
-                <Activity className="h-6 w-6 text-green-500 mb-2" />
-                <CardTitle>Activity Logs</CardTitle>
+                <Activity className="h-6 w-6 text-gray-700 dark:text-gray-300 mb-2" />
+                <CardTitle>{t("dashboard.activityLogs")}</CardTitle>
                 <CardDescription>
-                  Track login, logout, and system activities
+                  {t("dashboard.activityLogsDescription")}
                 </CardDescription>
               </CardHeader>
 
@@ -77,7 +81,7 @@ export default function DashboardClient() {
                   href="/dashboard/activity"
                   className="inline-flex items-center gap-1 text-primary font-medium"
                 >
-                  View Logs
+                  {t("dashboard.viewLogs")}
                   <ArrowRight className="h-4 w-4" />
                 </Link>
               </CardContent>
@@ -88,10 +92,10 @@ export default function DashboardClient() {
           <GlassCard delay={0.4}>
             <Card className="border-0 bg-transparent">
               <CardHeader>
-                <FileText className="h-6 w-6 text-purple-500 mb-2" />
-                <CardTitle>Reports</CardTitle>
+                <FileText className="h-6 w-6 text-red-600 dark:text-red-500 mb-2" />
+                <CardTitle>{t("dashboard.reports")}</CardTitle>
                 <CardDescription>
-                  View transaction and settlement reports
+                  {t("dashboard.reportsDescription")}
                 </CardDescription>
               </CardHeader>
 
@@ -100,7 +104,7 @@ export default function DashboardClient() {
                   href="/dashboard/reports"
                   className="inline-flex items-center gap-1 text-primary font-medium"
                 >
-                  View Reports
+                  {t("dashboard.viewReports")}
                   <ArrowRight className="h-4 w-4" />
                 </Link>
               </CardContent>

@@ -25,7 +25,7 @@ const modules = [
       "Quick access to exceptions",
       "Reconciliation summary widgets",
     ],
-    color: "blue",
+    color: "red",
   },
   {
     icon: CreditCard,
@@ -37,7 +37,7 @@ const modules = [
       "Match details and exception views",
       "Export reconciliation data",
     ],
-    color: "green",
+    color: "dark-gray",
   },
   {
     icon: Users,
@@ -49,7 +49,7 @@ const modules = [
       "Permission management",
       "User activity logs",
     ],
-    color: "purple",
+    color: "red",
   },
   {
     icon: BarChart3,
@@ -61,7 +61,7 @@ const modules = [
       "Custom reconciliation report builder",
       "Matching performance visualization",
     ],
-    color: "orange",
+    color: "dark-gray",
   },
   {
     icon: Settings,
@@ -73,7 +73,7 @@ const modules = [
       "Notification preferences",
       "Exception handling rules",
     ],
-    color: "pink",
+    color: "red",
   },
   {
     icon: FileText,
@@ -85,7 +85,7 @@ const modules = [
       "Exception and unmatched payment reports",
       "Export in CSV, PDF, Excel formats",
     ],
-    color: "teal",
+    color: "dark-gray",
   },
   {
     icon: Bell,
@@ -97,7 +97,7 @@ const modules = [
       "In-app alerts",
       "Notification preferences",
     ],
-    color: "indigo",
+    color: "red",
   },
   {
     icon: Monitor,
@@ -132,14 +132,8 @@ export default function ScreensPage() {
           {modules.map((module, index) => {
             const Icon = module.icon
             const colorClasses = {
-              blue: "bg-blue-500/10 text-blue-600 dark:text-blue-400",
-              green: "bg-green-500/10 text-green-600 dark:text-green-400",
-              purple: "bg-purple-500/10 text-purple-600 dark:text-purple-400",
-              orange: "bg-orange-500/10 text-orange-600 dark:text-orange-400",
-              pink: "bg-pink-500/10 text-pink-600 dark:text-pink-400",
-              teal: "bg-teal-500/10 text-teal-600 dark:text-teal-400",
-              indigo: "bg-indigo-500/10 text-indigo-600 dark:text-indigo-400",
-              red: "bg-red-500/10 text-red-600 dark:text-red-400",
+              red: "bg-[#E5E7EB] text-[#E53935] border border-[#E5E7EB]",
+              "dark-gray": "bg-[#E5E7EB] text-[#111111] border border-[#E5E7EB]",
             }
             return (
               <GlassCard key={module.title} delay={index * 0.1}>

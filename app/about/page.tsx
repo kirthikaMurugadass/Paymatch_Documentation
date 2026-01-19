@@ -1,6 +1,6 @@
 import type { Metadata } from "next"
 import { createPageMetadata } from "@/lib/metadata"
-import { AboutPageClient } from "./about-client"
+import { AboutPage } from "@/features/about"
 
 export const metadata: Metadata = createPageMetadata(
   "About PayMatch",
@@ -8,6 +8,6 @@ export const metadata: Metadata = createPageMetadata(
   "/about"
 )
 
-export default function AboutPage() {
-  return <AboutPageClient />
+export default function AboutPageRoute() {
+  return <AboutPage />
 }

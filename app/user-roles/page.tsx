@@ -1,6 +1,6 @@
 import type { Metadata } from "next"
 import { createPageMetadata } from "@/lib/metadata"
-import { UserRolesPageClient } from "./user-roles-client"
+import { UserRolesPage } from "@/features/user-roles"
 
 export const metadata: Metadata = createPageMetadata(
   "User Roles",
@@ -8,6 +8,6 @@ export const metadata: Metadata = createPageMetadata(
   "/user-roles"
 )
 
-export default function UserRolesPage() {
-  return <UserRolesPageClient />
+export default function UserRolesPageRoute() {
+  return <UserRolesPage />
 }

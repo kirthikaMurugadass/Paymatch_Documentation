@@ -5,72 +5,73 @@ import { motion, AnimatePresence } from "framer-motion"
 import Link from "next/link"
 import { usePathname } from "next/navigation"
 import { cn } from "@/lib/utils"
+import { useLanguage } from "@/contexts/language-context"
+import { useTranslation } from "@/lib/translations"
 import {
-  Home,
-  Info,
-  Sparkles,
   Users,
-  Shield,
-  LayoutDashboard,
+  Package,
+  FileText,
+  Receipt,
   CreditCard,
-  TrendingUp,
-  Lock,
-  Network,
-  Monitor,
-  HelpCircle,
-  CheckCircle2,
+  FileX,
+  Repeat,
+  DollarSign,
+  User,
+  Wallet,
+  Building2,
+  Palette,
+  Users2,
+  FolderOpen,
+  Mail,
   ChevronDown,
   ChevronRight,
 } from "lucide-react"
 
 interface NavItem {
-  name: string
+  nameKey: string
   href: string
   icon: React.ComponentType<{ className?: string }>
 }
 
 interface NavSection {
-  title: string
+  titleKey: string
   items: NavItem[]
 }
 
 const navigationSections: NavSection[] = [
   {
-    title: "Getting Started",
+    titleKey: "navigation.masterData",
     items: [
-      { name: "Introduction", href: "/", icon: Home },
-      { name: "About PayMatch", href: "/about", icon: Info },
-      { name: "Key Features", href: "/features", icon: Sparkles },
+      { nameKey: "navigation.clients", href: "/clients", icon: Users },
+      { nameKey: "navigation.products", href: "/products", icon: Package },
     ],
   },
   {
-    title: "User Guide",
+    titleKey: "navigation.salesBilling",
     items: [
-      { name: "User Roles", href: "/user-roles", icon: Users },
-      { name: "Authentication", href: "/authentication", icon: Shield },
-      { name: "Dashboard", href: "/dashboard", icon: LayoutDashboard },
+      { nameKey: "navigation.quotes", href: "/quotes", icon: FileText },
+      { nameKey: "navigation.invoices", href: "/invoices", icon: Receipt },
+      { nameKey: "navigation.payments", href: "/payments", icon: CreditCard },
+      { nameKey: "navigation.creditNotes", href: "/credit-notes", icon: FileX },
+      { nameKey: "navigation.recurringInvoices", href: "/recurring-invoices", icon: Repeat },
     ],
   },
   {
-    title: "Core Features",
+    titleKey: "navigation.expenses",
     items: [
-      { name: "Transactions", href: "/transactions", icon: CreditCard },
-      { name: "Settlement", href: "/settlement", icon: TrendingUp },
-      { name: "Security", href: "/security", icon: Lock },
+      { nameKey: "navigation.expenses", href: "/expenses", icon: DollarSign },
     ],
   },
   {
-    title: "Technical",
+    titleKey: "navigation.settingsSupport",
     items: [
-      { name: "Architecture", href: "/architecture", icon: Network },
-      { name: "Screens & Modules", href: "/screens", icon: Monitor },
-    ],
-  },
-  {
-    title: "Resources",
-    items: [
-      { name: "FAQs", href: "/faqs", icon: HelpCircle },
-      { name: "Conclusion", href: "/conclusion", icon: CheckCircle2 },
+      { nameKey: "navigation.profile", href: "/profile", icon: User },
+      { nameKey: "navigation.billing", href: "/billing", icon: Wallet },
+      { nameKey: "navigation.account", href: "/account", icon: Building2 },
+      { nameKey: "navigation.branding", href: "/branding", icon: Palette },
+      { nameKey: "navigation.team", href: "/team", icon: Users2 },
+      { nameKey: "navigation.documents", href: "/documents", icon: FolderOpen },
+      { nameKey: "navigation.emails", href: "/emails", icon: Mail },
     ],
   },
 ]
@@ -81,25 +82,38 @@ interface SidebarContentProps {
 
 export function SidebarContent({ onNavigate }: SidebarContentProps) {
   const pathname = usePathname()
+  const { language } = useLanguage()
+  const { t } = useTranslation(language)
   const [openSections, setOpenSections] = useState<Set<string>>(new Set())
 
-  // Auto-expand section containing active item
+  // Auto-expand section containing active item, and expand all sections on initial load
   useEffect(() => {
+    const newOpenSections = new Set<string>()
+    
     navigationSections.forEach((section) => {
       const hasActiveItem = section.items.some((item) => item.href === pathname)
       if (hasActiveItem) {
-        setOpenSections((prev) => new Set(prev).add(section.title))
+        newOpenSections.add(section.titleKey)
       }
     })
+
+    // If no active item, expand all sections by default for better UX
+    if (newOpenSections.size === 0) {
+      navigationSections.forEach((section) => {
+        newOpenSections.add(section.titleKey)
+      })
+    }
+
+    setOpenSections(newOpenSections)
   }, [pathname])
 
-  const toggleSection = (title: string) => {
+  const toggleSection = (titleKey: string) => {
     setOpenSections((prev) => {
       const next = new Set(prev)
-      if (next.has(title)) {
-        next.delete(title)
+      if (next.has(titleKey)) {
+        next.delete(titleKey)
       } else {
-        next.add(title)
+        next.add(titleKey)
       }
       return next
     })
@@ -133,31 +147,31 @@ export function SidebarContent({ onNavigate }: SidebarContentProps) {
   return (
     <nav className="p-4 space-y-2">
       {navigationSections.map((section) => {
-        const isOpen = openSections.has(section.title)
+        const isOpen = openSections.has(section.titleKey)
         const hasActiveItem = section.items.some((item) => item.href === pathname)
 
         return (
-          <div key={section.title} className="space-y-1">
+          <div key={section.titleKey} className="space-y-1">
             {/* Section Header */}
             <button
-              onClick={() => toggleSection(section.title)}
+              onClick={() => toggleSection(section.titleKey)}
               className={cn(
                 "w-full flex items-center justify-between px-3 py-2.5 text-sm font-semibold text-muted-foreground",
-                "hover:text-foreground transition-all duration-200 rounded-xl",
-                "hover:bg-accent/50 hover:shadow-soft",
-                hasActiveItem && "text-foreground"
+                "hover:text-foreground transition-colors rounded-lg group relative",
+                "hover:bg-muted",
+                hasActiveItem && "text-foreground bg-muted"
               )}
             >
-              <span>{section.title}</span>
+              <span className="tracking-wide">{t(section.titleKey as any)}</span>
               <motion.div
                 animate={{ rotate: isOpen ? 90 : 0 }}
-                transition={{ duration: 0.2 }}
+                transition={{ duration: 0.2, ease: "easeInOut" }}
                 className="flex-shrink-0"
               >
                 {isOpen ? (
-                  <ChevronDown className="h-4 w-4" />
+                  <ChevronDown className="h-4 w-4 transition-colors text-muted-foreground group-hover:text-foreground" />
                 ) : (
-                  <ChevronRight className="h-4 w-4" />
+                  <ChevronRight className="h-4 w-4 transition-colors text-muted-foreground group-hover:text-foreground" />
                 )}
               </motion.div>
             </button>
@@ -182,25 +196,25 @@ export function SidebarContent({ onNavigate }: SidebarContentProps) {
                       href={item.href}
                       onClick={(e) => handleLinkClick(e, item.href)}
                       className={cn(
-                        "flex items-center gap-3 rounded-xl px-3 py-2.5 text-sm font-medium transition-all duration-300",
+                        "flex items-center gap-3 rounded-lg px-3 py-2.5 text-sm font-medium transition-colors",
                         "group relative",
                         isActive
-                          ? "bg-gradient-to-r from-blue-500/20 to-purple-500/20 text-primary shadow-soft border border-blue-500/20"
-                          : "text-muted-foreground hover:bg-accent/50 hover:text-accent-foreground hover:shadow-soft"
+                          ? "bg-muted text-foreground"
+                          : "text-muted-foreground hover:bg-muted hover:text-foreground"
                       )}
                     >
                       {/* Active indicator */}
                       {isActive && (
-                        <div className="absolute left-0 top-1/2 -translate-y-1/2 -translate-x-4 w-1 h-6 bg-gradient-to-b from-blue-500 to-purple-500 rounded-r-full" />
+                        <div className="absolute left-0 top-1/2 -translate-y-1/2 -translate-x-4 w-1 h-6 bg-primary rounded-r-full" />
                       )}
                       <Icon
                         className={cn(
-                          "h-4 w-4 transition-transform duration-300",
-                          isActive && "scale-110",
-                          "group-hover:scale-110"
+                          "h-4 w-4 transition-colors",
+                          isActive && "text-primary",
+                          "group-hover:text-primary"
                         )}
                       />
-                      <span>{item.name}</span>
+                      <span className="tracking-wide">{t(item.nameKey as any)}</span>
                     </Link>
                   )
                 })}

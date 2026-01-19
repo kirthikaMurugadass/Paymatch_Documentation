@@ -43,7 +43,7 @@ export default function ArchitecturePage() {
           <GlassCard>
             <Card className="border-0 bg-transparent">
               <CardHeader>
-                <Layers className="h-6 w-6 text-blue-500 mb-2" />
+                <Layers className="h-6 w-6 text-red-600 dark:text-red-500 mb-2" />
                 <CardTitle>Frontend Layer</CardTitle>
                 <CardDescription>
                   Modern user interfaces for Admin, Merchant, and Customer dashboards
@@ -63,7 +63,7 @@ export default function ArchitecturePage() {
           <GlassCard delay={0.2}>
             <Card className="border-0 bg-transparent">
               <CardHeader>
-                <Server className="h-6 w-6 text-green-500 mb-2" />
+                <Server className="h-6 w-6 text-gray-700 dark:text-gray-300 mb-2" />
                 <CardTitle>Backend Services</CardTitle>
                 <CardDescription>
                   Business logic, transaction processing, and reconciliation engine
@@ -83,7 +83,7 @@ export default function ArchitecturePage() {
           <GlassCard delay={0.4}>
             <Card className="border-0 bg-transparent">
               <CardHeader>
-                <ShieldCheck className="h-6 w-6 text-purple-500 mb-2" />
+                <ShieldCheck className="h-6 w-6 text-red-600 dark:text-red-500 mb-2" />
                 <CardTitle>Security & Compliance</CardTitle>
                 <CardDescription>
                   Comprehensive security infrastructure

@@ -1,6 +1,6 @@
 import type { Metadata } from "next"
 import { createPageMetadata } from "@/lib/metadata"
-import { FeaturesPageClient } from "./features-client"
+import { FeaturesPage } from "@/features/features"
 
 export const metadata: Metadata = createPageMetadata(
   "Key Features",
@@ -8,6 +8,6 @@ export const metadata: Metadata = createPageMetadata(
   "/features"
 )
 
-export default function FeaturesPage() {
-  return <FeaturesPageClient />
+export default function FeaturesPageRoute() {
+  return <FeaturesPage />
 }

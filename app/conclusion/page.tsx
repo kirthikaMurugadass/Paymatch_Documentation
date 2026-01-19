@@ -27,8 +27,8 @@ export default function ConclusionPage() {
           <GlassCard>
             <Card className="border-0 bg-transparent">
               <CardHeader>
-                <div className="mb-2 flex h-10 w-10 items-center justify-center rounded-lg bg-blue-500/10">
-                  <Shield className="h-5 w-5 text-blue-600 dark:text-blue-400" />
+                <div className="mb-2 flex h-10 w-10 items-center justify-center rounded-lg bg-red-500/10 border border-red-500/20 dark:border-red-500/10">
+                  <Shield className="h-5 w-5 text-red-600 dark:text-red-500" />
                 </div>
                 <CardTitle>Automated Reconciliation</CardTitle>
               </CardHeader>
@@ -44,8 +44,8 @@ export default function ConclusionPage() {
           <GlassCard delay={0.1}>
             <Card className="border-0 bg-transparent">
               <CardHeader>
-                <div className="mb-2 flex h-10 w-10 items-center justify-center rounded-lg bg-green-500/10">
-                  <Code className="h-5 w-5 text-green-600 dark:text-green-400" />
+                <div className="mb-2 flex h-10 w-10 items-center justify-center rounded-lg bg-gray-800/10 dark:bg-gray-700/20 border border-gray-500/20 dark:border-gray-500/10">
+                  <Code className="h-5 w-5 text-gray-700 dark:text-gray-300" />
                 </div>
                 <CardTitle>Intelligent Matching</CardTitle>
               </CardHeader>
@@ -61,8 +61,8 @@ export default function ConclusionPage() {
           <GlassCard delay={0.2}>
             <Card className="border-0 bg-transparent">
               <CardHeader>
-                <div className="mb-2 flex h-10 w-10 items-center justify-center rounded-lg bg-purple-500/10">
-                  <CheckCircle2 className="h-5 w-5 text-purple-600 dark:text-purple-400" />
+                <div className="mb-2 flex h-10 w-10 items-center justify-center rounded-lg bg-red-500/10 border border-red-500/20 dark:border-red-500/10">
+                  <CheckCircle2 className="h-5 w-5 text-red-600 dark:text-red-500" />
                 </div>
                 <CardTitle>Comprehensive Reporting</CardTitle>
               </CardHeader>
@@ -136,7 +136,7 @@ export default function ConclusionPage() {
 
       <Section>
         <div className="prose prose-lg dark:prose-invert max-w-none">
-          <div className="p-8 rounded-lg bg-gradient-to-br from-blue-600/10 via-purple-600/10 to-pink-600/10 border border-primary/20">
+          <div className="p-8 rounded-lg bg-gradient-to-br from-red-600/10 via-red-800/10 to-gray-900/10 dark:from-red-950/20 dark:via-gray-900/20 dark:to-gray-950/20 border border-red-500/20 dark:border-red-500/10">
             <h2 className="text-2xl font-bold mb-4">Ready to Get Started?</h2>
             <p className="text-muted-foreground mb-6">
               PayMatch is ready to help you automate your payment reconciliation. Whether

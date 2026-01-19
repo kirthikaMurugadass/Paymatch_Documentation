@@ -1,6 +1,6 @@
 import type { Metadata } from "next"
 import { createPageMetadata } from "@/lib/metadata"
-import { AuthenticationPageClient } from "./authentication-client"
+import { AuthenticationPage } from "@/features/authentication"
 
 export const metadata: Metadata = createPageMetadata(
   "Authentication & User Onboarding",
@@ -8,6 +8,6 @@ export const metadata: Metadata = createPageMetadata(
   "/authentication"
 )
 
-export default function AuthenticationPage() {
-  return <AuthenticationPageClient />
+export default function AuthenticationPageRoute() {
+  return <AuthenticationPage />
 }

@@ -34,7 +34,7 @@ const roles = [
       "Export reconciliation reports",
       "Access matching analytics and metrics",
     ],
-    color: "blue",
+    color: "dark-gray",
   },
   {
     icon: User,
@@ -48,16 +48,16 @@ const roles = [
       "View payment matching status",
       "Access customer support",
     ],
-    color: "green",
+    color: "dark-gray",
   },
 ]
 
-export function UserRolesPageClient() {
+export function UserRolesPage() {
   return (
     <div className="space-y-12">
       <Section>
         <div className="max-w-4xl">
-          <h1 className="text-4xl md:text-5xl font-bold mb-6 gradient-text dark:gradient-text-2">
+          <h1 className="text-4xl md:text-5xl font-bold mb-6 text-foreground">
             User Roles
           </h1>
           <p className="text-xl md:text-2xl text-muted-foreground leading-relaxed">
@@ -73,9 +73,8 @@ export function UserRolesPageClient() {
           {roles.map((role, index) => {
             const Icon = role.icon
             const colorClasses = {
-              red: "bg-red-500/10 text-red-600 dark:text-red-400",
-              blue: "bg-blue-500/10 text-blue-600 dark:text-blue-400",
-              green: "bg-green-500/10 text-green-600 dark:text-green-400",
+              red: "bg-muted text-primary border border-border",
+              "dark-gray": "bg-muted text-foreground border border-border",
             }
             return (
               <GlassCard key={role.title} delay={index * 0.1}>

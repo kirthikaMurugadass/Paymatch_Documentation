@@ -10,8 +10,6 @@ const nextConfig: NextConfig = {
   // Production optimizations
   poweredByHeader: false,
   reactStrictMode: true,
-  // Optimize fonts
-  optimizeFonts: true,
 };
 
 export default nextConfig;

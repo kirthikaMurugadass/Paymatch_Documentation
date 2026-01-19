@@ -2,48 +2,59 @@
 
 @layer base {
   :root {
-    --background: 0 0% 100%;
-    --foreground: 0 0% 3.9%;
+    /* PayMatch Design System Colors */
+    --background: 0 0% 100%; /* #FFFFFF */
+    --foreground: 0 0% 7%; /* #111111 */
     --card: 0 0% 100%;
-    --card-foreground: 0 0% 3.9%;
+    --card-foreground: 0 0% 7%;
     --popover: 0 0% 100%;
-    --popover-foreground: 0 0% 3.9%;
-    --primary: 0 0% 9%;
-    --primary-foreground: 0 0% 98%;
-    --secondary: 0 0% 96.1%;
-    --secondary-foreground: 0 0% 9%;
-    --muted: 0 0% 96.1%;
-    --muted-foreground: 0 0% 45.1%;
-    --accent: 0 0% 96.1%;
-    --accent-foreground: 0 0% 9%;
-    --destructive: 0 84.2% 60.2%;
-    --destructive-foreground: 0 0% 98%;
-    --border: 0 0% 89.8%;
-    --input: 0 0% 89.8%;
-    --ring: 0 0% 3.9%;
-    --radius: 0.5rem;
+    --popover-foreground: 0 0% 7%;
+    --primary: 0 72% 51%; /* #E53935 */
+    --primary-foreground: 0 0% 100%; /* White text on red */
+    --secondary: 0 0% 7%; /* #111111 */
+    --secondary-foreground: 0 0% 100%; /* White text on black */
+    --muted: 0 0% 90%;
+    --muted-foreground: 0 0% 33%; /* #555555 */
+    --accent: 0 0% 90%;
+    --accent-foreground: 0 0% 7%;
+    --destructive: 0 72% 51%; /* #E53935 */
+    --destructive-foreground: 0 0% 100%;
+    --border: 0 0% 90%; /* #E5E7EB */
+    --input: 0 0% 90%; /* #E5E7EB */
+    --ring: 0 72% 51%; /* #E53935 */
+    --radius: 0.5rem; /* 8px */
+    /* PayMatch Brand Colors */
+    --paymatch-red: 0 72% 51%; /* #E53935 */
+    --paymatch-black: 0 0% 7%; /* #111111 */
+    --paymatch-gray: 0 0% 33%; /* #555555 */
+    --paymatch-border: 0 0% 90%; /* #E5E7EB */
   }
 
   .dark {
-    --background: 0 0% 3.9%;
-    --foreground: 0 0% 98%;
-    --card: 0 0% 3.9%;
-    --card-foreground: 0 0% 98%;
-    --popover: 0 0% 3.9%;
-    --popover-foreground: 0 0% 98%;
-    --primary: 0 0% 98%;
-    --primary-foreground: 0 0% 9%;
-    --secondary: 0 0% 14.9%;
-    --secondary-foreground: 0 0% 98%;
-    --muted: 0 0% 14.9%;
-    --muted-foreground: 0 0% 63.9%;
-    --accent: 0 0% 14.9%;
-    --accent-foreground: 0 0% 98%;
-    --destructive: 0 62.8% 30.6%;
-    --destructive-foreground: 0 0% 98%;
-    --border: 0 0% 14.9%;
-    --input: 0 0% 14.9%;
-    --ring: 0 0% 83.1%;
+    /* PayMatch Dark Mode Colors */
+    --background: 0 0% 4%; /* #0B0B0B */
+    --foreground: 0 0% 100%; /* #FFFFFF */
+    --card: 0 0% 8%; /* #151515 */
+    --card-foreground: 0 0% 100%; /* #FFFFFF */
+    --popover: 0 0% 8%; /* #151515 */
+    --popover-foreground: 0 0% 100%; /* #FFFFFF */
+    --primary: 0 72% 51%; /* #E53935 - Same red in dark mode */
+    --primary-foreground: 0 0% 100%; /* White text on red */
+    --secondary: 0 0% 10%; /* #1A1A1A */
+    --secondary-foreground: 0 0% 100%; /* White text */
+    --muted: 0 0% 8%; /* #151515 */
+    --muted-foreground: 0 0% 63%; /* #A1A1AA */
+    --accent: 0 0% 8%; /* #151515 */
+    --accent-foreground: 0 0% 100%; /* #FFFFFF */
+    --destructive: 0 72% 51%; /* #E53935 */
+    --destructive-foreground: 0 0% 100%; /* White text */
+    --border: 0 0% 15%; /* #27272A */
+    --input: 0 0% 15%; /* #27272A */
+    --ring: 0 72% 51%; /* #E53935 */
+    --paymatch-red: 0 72% 51%; /* #E53935 */
+    --paymatch-black: 0 0% 100%; /* #FFFFFF in dark mode */
+    --paymatch-gray: 0 0% 63%; /* #A1A1AA */
+    --paymatch-border: 0 0% 15%; /* #27272A */
   }
 }
 
@@ -67,8 +78,8 @@
   --color-border: hsl(var(--border));
   --color-input: hsl(var(--input));
   --color-ring: hsl(var(--ring));
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --font-serif: var(--font-serif);
+  --font-serif-alt: var(--font-serif-alt);
 }
 
 * {
@@ -78,7 +89,11 @@
 body {
   background-color: hsl(var(--background));
   color: hsl(var(--foreground));
-  font-family: var(--font-sans);
+  font-family: "Inter", system-ui, -apple-system, sans-serif;
+  font-feature-settings: "kern" 1, "liga" 1;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
 html {
@@ -108,10 +123,11 @@ html {
 .scrollbar-thin::-webkit-scrollbar-thumb {
   background-color: hsl(var(--muted));
   border-radius: 3px;
+  transition: background-color 0.3s ease;
 }
 
 .scrollbar-thin:hover::-webkit-scrollbar-thumb {
-  background-color: hsl(var(--muted-foreground) / 0.3);
+  background-color: hsl(var(--destructive) / 0.6);
 }
 
 .scrollbar-thumb-muted {
@@ -122,97 +138,136 @@ html {
   scrollbar-color: hsl(var(--muted)) transparent;
 }
 
-/* Modern Typography Scale */
+/* PayMatch Typography Scale - Inter Font */
 @layer base {
   h1 {
     @apply text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight;
+    font-family: "Inter", system-ui, -apple-system, sans-serif;
+    font-weight: 700;
+    color: hsl(var(--foreground));
+    letter-spacing: -0.02em;
   }
   
   h2 {
     @apply text-3xl md:text-4xl font-bold tracking-tight;
+    font-family: "Inter", system-ui, -apple-system, sans-serif;
+    font-weight: 700;
+    color: hsl(var(--foreground));
+    letter-spacing: -0.01em;
   }
   
   h3 {
     @apply text-2xl md:text-3xl font-semibold tracking-tight;
+    font-family: "Inter", system-ui, -apple-system, sans-serif;
+    font-weight: 600;
+    color: hsl(var(--foreground));
   }
   
   h4 {
     @apply text-xl md:text-2xl font-semibold;
+    font-family: "Inter", system-ui, -apple-system, sans-serif;
+    font-weight: 600;
+    color: hsl(var(--foreground));
   }
   
   p {
     @apply text-base md:text-lg leading-relaxed;
+    font-family: "Inter", system-ui, -apple-system, sans-serif;
+    font-weight: 400;
+    color: hsl(var(--muted-foreground));
   }
 }
 
-/* Gradient Backgrounds */
+/* Black & Red Theme Utilities */
 @layer utilities {
-  .gradient-bg {
-    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-  }
-  
-  .gradient-bg-2 {
-    background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
-  }
-  
-  .gradient-bg-3 {
-    background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
-  }
-  
-  /* Soft Shadows */
+  /* PayMatch Flat Shadows */
   .shadow-soft {
-    box-shadow: 0 2px 15px -3px rgba(0, 0, 0, 0.07), 0 10px 20px -2px rgba(0, 0, 0, 0.04);
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
   }
   
   .shadow-soft-lg {
-    box-shadow: 0 10px 40px -10px rgba(0, 0, 0, 0.1), 0 20px 60px -15px rgba(0, 0, 0, 0.05);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
   }
   
-  .shadow-glow {
-    box-shadow: 0 0 20px rgba(99, 102, 241, 0.3);
+  /* PayMatch Flat Shadows - No Glow */
+  .shadow-red-glow {
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  }
+
+  .shadow-red-glow-hover {
+    transition: box-shadow 0.2s ease;
+  }
+
+  .shadow-red-glow-hover:hover {
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
   }
   
-  .shadow-glow-hover {
-    transition: box-shadow 0.3s ease;
-  }
-  
-  .shadow-glow-hover:hover {
-    box-shadow: 0 0 30px rgba(99, 102, 241, 0.5), 0 10px 40px -10px rgba(0, 0, 0, 0.1);
-  }
-  
-  /* Hover Glow Effects */
+  /* PayMatch Flat Design - No Glow Effects */
   .hover-glow {
-    transition: all 0.3s ease;
+    transition: opacity 0.2s ease;
   }
-  
+
   .hover-glow:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 10px 40px -10px rgba(99, 102, 241, 0.4), 0 20px 60px -15px rgba(139, 92, 246, 0.3);
+    opacity: 0.9;
   }
   
-  /* Gradient Text */
-  .gradient-text {
-    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  /* Premium Black & Red Gradient Text */
+  /* .gradient-text {
+    background: linear-gradient(135deg, #0a0a0a 0%, #dc2626 50%, #991b1b 100%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
   }
-  
+
   .gradient-text-2 {
-    background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+    background: linear-gradient(135deg, #dc2626 0%, #0a0a0a 100%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
+  }
+
+  .gradient-text-red {
+    background: linear-gradient(135deg, #0a0a0a 0%, #dc2626 50%, #991b1b 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .gradient-text-red-reverse {
+    background: linear-gradient(135deg, #dc2626 0%, #0a0a0a 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  } */
+
+  /* Removed gradients - PayMatch uses flat colors */
+
+
+  /* Premium hover glow effect */
+  .hover-red-glow {
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  .hover-red-glow:hover {
+    box-shadow: 0 0 20px rgba(220, 38, 38, 0.4), 0 4px 12px rgba(0, 0, 0, 0.15);
   }
 }
 
-/* Dark mode adjustments */
+/* Dark mode adjustments - PayMatch flat design */
 .dark .shadow-soft {
-  box-shadow: 0 2px 15px -3px rgba(0, 0, 0, 0.3), 0 10px 20px -2px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
 }
 
 .dark .shadow-soft-lg {
-  box-shadow: 0 10px 40px -10px rgba(0, 0, 0, 0.4), 0 20px 60px -15px rgba(0, 0, 0, 0.3);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+}
+
+.dark .shadow-red-glow {
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
+}
+
+.dark .shadow-red-glow-hover:hover {
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.4);
 }
 
 /* Smooth animations */
@@ -238,13 +293,13 @@ html {
   transform: translateY(-4px) scale(1.02);
 }
 
-/* Icon glow on hover */
+/* PayMatch Icon Hover - Simple Opacity */
 .icon-glow {
-  transition: all 0.3s ease;
+  transition: opacity 0.2s ease;
 }
 
 .icon-glow:hover {
-  filter: drop-shadow(0 0 8px currentColor);
+  opacity: 0.8;
 }
- 
 
+/* Headings use theme-aware colors via CSS variables */

@@ -1,6 +1,6 @@
 import type { Metadata } from "next"
 import { createPageMetadata } from "@/lib/metadata"
-import { HomePageClient } from "./home-client"
+import { HomePage } from "@/features/home"
 
 export const metadata: Metadata = createPageMetadata(
   "Introduction",
@@ -9,5 +9,5 @@ export const metadata: Metadata = createPageMetadata(
 )
 
 export default function Home() {
-  return <HomePageClient />
+  return <HomePage />
 }
