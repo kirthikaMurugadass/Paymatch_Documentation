@@ -26,6 +26,21 @@ export default function RootLayout({
       <body
         className={`${inter.variable} antialiased`}
       >
+        <script dangerouslySetInnerHTML={{ __html: `(() => {
+          try {
+            const key = 'paymatch-theme'
+            const stored = localStorage.getItem(key)
+            if (stored === 'light' || stored === 'dark') {
+              document.documentElement.classList.add(stored)
+              document.documentElement.classList.remove(stored === 'dark' ? 'light' : 'dark')
+            } else {
+              const prefersDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches
+              document.documentElement.classList.add(prefersDark ? 'dark' : 'light')
+            }
+          } catch (e) {
+            // ignore
+          }
+        })();` }} />
         <ThemeProvider
           attribute="class"
           defaultTheme="system"
