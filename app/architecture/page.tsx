@@ -13,8 +13,12 @@ import {
   CardDescription,
   CardContent,
 } from "@/components/ui/card"
+import { useLanguage } from "@/contexts/language-context"
+import { useTranslation } from "@/lib/translations"
 
 export default function ArchitecturePage() {
+  const { language } = useLanguage()
+  const { t } = useTranslation(language)
   return (
     <div className="space-y-24">
 
@@ -26,12 +30,11 @@ export default function ArchitecturePage() {
           transition={{ duration: 0.6 }}
           className="text-4xl md:text-5xl font-bold"
         >
-          System Architecture
+          {t("architecture.title")}
         </motion.h1>
 
         <p className="mt-4 text-lg text-muted-foreground max-w-3xl">
-          Overview of PayMatch system design, infrastructure components,
-          and secure integration architecture.
+          {t("architecture.description")}
         </p>
       </Section>
 
@@ -44,16 +47,13 @@ export default function ArchitecturePage() {
             <Card className="border-0 bg-transparent">
               <CardHeader>
                 <Layers className="h-6 w-6 text-red-600 dark:text-red-500 mb-2" />
-                <CardTitle>Frontend Layer</CardTitle>
-                <CardDescription>
-                  Modern user interfaces for Admin, Merchant, and Customer dashboards
-                </CardDescription>
+                <CardTitle>{t("architecture.frontendLayer")}</CardTitle>
+                <CardDescription>{t("architecture.frontendLayerDescription")}</CardDescription>
               </CardHeader>
 
               <CardContent>
                 <p className="text-sm text-muted-foreground">
-                  Built using Next.js and Tailwind CSS, providing responsive,
-                  accessible, and high-performance user experiences.
+                  {t("architecture.frontendLayerContent")}
                 </p>
               </CardContent>
             </Card>
@@ -64,16 +64,13 @@ export default function ArchitecturePage() {
             <Card className="border-0 bg-transparent">
               <CardHeader>
                 <Server className="h-6 w-6 text-gray-700 dark:text-gray-300 mb-2" />
-                <CardTitle>Backend Services</CardTitle>
-                <CardDescription>
-                  Business logic, transaction processing, and reconciliation engine
-                </CardDescription>
+                <CardTitle>{t("architecture.backendServices")}</CardTitle>
+                <CardDescription>{t("architecture.backendServicesDescription")}</CardDescription>
               </CardHeader>
 
               <CardContent>
                 <p className="text-sm text-muted-foreground">
-                  Handles transaction matching, settlement calculations,
-                  audit logs, and integration with payment gateways.
+                  {t("architecture.backendServicesContent")}
                 </p>
               </CardContent>
             </Card>
@@ -84,16 +81,13 @@ export default function ArchitecturePage() {
             <Card className="border-0 bg-transparent">
               <CardHeader>
                 <ShieldCheck className="h-6 w-6 text-red-600 dark:text-red-500 mb-2" />
-                <CardTitle>Security & Compliance</CardTitle>
-                <CardDescription>
-                  Comprehensive security infrastructure
-                </CardDescription>
+                <CardTitle>{t("architecture.securityCompliance")}</CardTitle>
+                <CardDescription>{t("architecture.securityComplianceDescription")}</CardDescription>
               </CardHeader>
 
               <CardContent>
                 <p className="text-sm text-muted-foreground">
-                  Implements role-based access control, encrypted data transfer,
-                  secure authentication, and compliance monitoring.
+                  {t("architecture.securityComplianceContent")}
                 </p>
               </CardContent>
             </Card>
@@ -105,21 +99,21 @@ export default function ArchitecturePage() {
       {/* ================= ARCHITECTURE FLOW ================= */}
       <Section>
         <div className="prose prose-lg dark:prose-invert max-w-none">
-          <h2>Architecture Flow</h2>
+          <h2>{t("architecture.architectureFlow")}</h2>
 
           <ul>
-            <li>User interacts with frontend dashboards</li>
-            <li>Requests are securely sent to backend APIs</li>
-            <li>Transactions are processed and matched</li>
-            <li>Settlement calculations are performed</li>
-            <li>Reports and logs are generated</li>
+            <li>{t("architecture.architectureFlowItem1")}</li>
+            <li>{t("architecture.architectureFlowItem2")}</li>
+            <li>{t("architecture.architectureFlowItem3")}</li>
+            <li>{t("architecture.architectureFlowItem4")}</li>
+            <li>{t("architecture.architectureFlowItem5")}</li>
           </ul>
 
           <Link
             href="/dashboard"
             className="inline-flex items-center gap-2 text-primary font-medium mt-6"
           >
-            Go to Dashboard
+            {t("architecture.goToDashboard")}
             <ArrowRight className="h-4 w-4" />
           </Link>
         </div>

@@ -1515,6 +1515,25 @@
     "settlementStep4": "Confirmation and reporting",
     "backToDashboard": "Back to Dashboard"
   },
+  "settlement": {
+  "title": "Abwicklungsprozess",
+  "description": "Verstehen Sie, wie PayMatch die Abwicklungsverarbeitung, Abstimmungszyklen und die sichere Auszahlung von Geldern handhabt.",
+  "settlementFlow": "Abwicklungsablauf",
+  "settlementFlowDescription": "End-to-End-Workflow der Abwicklungsverarbeitung",
+  "settlementFlowContent": "Transaktionen werden basierend auf Abwicklungszyklen gruppiert, validiert, abgeglichen und für die Geldübertragung vorbereitet.",
+  "processingTime": "Verarbeitungszeit",
+  "processingTimeDescription": "Typische Dauer der Abwicklungsverarbeitung",
+  "processingTimeContent": "Abwicklungen werden innerhalb vordefinierter Zeitfenster verarbeitet, abhängig von Händlervereinbarungen und Bankplänen.",
+  "settlementConfirmation": "Abwicklungsbestätigung",
+  "settlementConfirmationDescription": "Statusverfolgung und Bestätigung",
+  "settlementConfirmationContent": "Händler erhalten Abwicklungsbestätigungen zusammen mit detaillierten Berichten für Transparenz und Prüfzwecke.",
+  "settlementSteps": "Abwicklungsschritte",
+  "settlementStep1": "Transaktionsvalidierung und Abstimmung",
+  "settlementStep2": "Erstellung von Abwicklungsbatches",
+  "settlementStep3": "Initiierung der Geldübertragung",
+  "settlementStep4": "Bestätigung und Berichterstattung",
+  "backToDashboard": "Zurück zum Dashboard"
+},
   "security": {
     "title": "Security",
     "authentication": "Authentication",

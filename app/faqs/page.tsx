@@ -4,70 +4,24 @@ import { Section } from "@/components/section"
 import { GlassCard } from "@/components/glass-card"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { HelpCircle } from "lucide-react"
-
-const faqs = [
-  {
-    question: "How does PayMatch automatically match payments with transactions?",
-    answer:
-      "PayMatch uses intelligent matching algorithms that compare incoming payments with merchant transactions based on transaction references, payment amounts, dates, customer information, and other matching criteria. The system automatically identifies matches and flags exceptions for manual review.",
-  },
-  {
-    question: "What happens when a payment cannot be matched?",
-    answer:
-      "When a payment cannot be automatically matched, it is flagged as an exception and appears in the unmatched payments section. Merchants can review these payments, see why they couldn't be matched, and manually match them with the correct transaction or resolve discrepancies.",
-  },
-  {
-    question: "How often does PayMatch run reconciliation?",
-    answer:
-      "Reconciliation schedules can be configured per merchant. Common options include daily, weekly, or monthly reconciliation runs. The system can also perform real-time matching as payments are received, depending on your configuration.",
-  },
-  {
-    question: "How do I get started as a merchant?",
-    answer:
-      "To get started, register for a merchant account through the PayMatch registration process. Complete your business information, verify your email, and submit required verification documents. Once your account is approved by an administrator, you can configure matching rules, connect payment sources, and start reconciling payments.",
-  },
-  {
-    question: "What payment sources can PayMatch reconcile?",
-    answer:
-      "PayMatch can reconcile payments from various sources including bank transfers, payment gateways, digital wallets, and other payment processors. The system integrates with multiple payment providers to automatically receive payment data for matching.",
-  },
-  {
-    question: "Can I integrate PayMatch with my accounting system?",
-    answer:
-      "Yes, PayMatch provides a comprehensive RESTful API that allows you to integrate reconciliation data with your existing accounting systems, ERP software, and financial reporting tools. We offer detailed API documentation and developer support.",
-  },
-  {
-    question: "What reconciliation reports are available?",
-    answer:
-      "PayMatch provides various reconciliation reports including matching status reports, unmatched payment reports, reconciliation summaries, and settlement reports. All reports can be exported in CSV, PDF, or Excel formats for accounting and audit purposes.",
-  },
-  {
-    question: "How accurate is the automatic payment matching?",
-    answer:
-      "PayMatch's matching algorithms are highly accurate, typically achieving matching rates of 90% or higher depending on data quality. The system uses multiple matching criteria and can be configured with custom matching rules to improve accuracy for specific business needs.",
-  },
-  {
-    question: "What kind of support is available?",
-    answer:
-      "PayMatch offers comprehensive support including documentation, API guides, email support, and for enterprise customers, dedicated account managers. We also provide training on reconciliation workflows and best practices.",
-  },
-  {
-    question: "Is PayMatch compliant with data protection regulations?",
-    answer:
-      "Yes, PayMatch is compliant with major data protection regulations including GDPR (for EU users), PCI DSS (for payment data), and other regional requirements. We implement strict data protection measures, encryption, and privacy controls to secure all payment and transaction data.",
-  },
-]
+import { useLanguage } from "@/contexts/language-context"
+import { useTranslation } from "@/lib/translations"
 
 export default function FAQsPage() {
+  const { language } = useLanguage()
+  const { t } = useTranslation(language)
+
+  const faqs = Array.from({ length: 10 }, (_, i) => ({
+    question: t(`faqs.question${i + 1}` as any),
+    answer: t(`faqs.answer${i + 1}` as any),
+  }))
+
   return (
     <div className="space-y-12">
       <Section>
         <div className="max-w-4xl">
-          <h1 className="text-4xl font-bold mb-4">Frequently Asked Questions</h1>
-          <p className="text-xl text-muted-foreground leading-relaxed">
-            Find answers to common questions about PayMatch, its features, and how to use
-            the platform effectively.
-          </p>
+          <h1 className="text-4xl font-bold mb-4">{t("faqs.title")}</h1>
+          <p className="text-xl text-muted-foreground leading-relaxed">{t("faqs.description")}</p>
         </div>
       </Section>
 
@@ -98,15 +52,12 @@ export default function FAQsPage() {
       <Section>
         <div className="prose prose-lg dark:prose-invert max-w-none">
           <div className="p-6 rounded-lg bg-muted/50 border">
-            <h2 className="text-2xl font-bold mb-4">Still Have Questions?</h2>
-            <p className="text-muted-foreground mb-4">
-              If you can't find the answer you're looking for, please don't hesitate to
-              reach out to our support team. We're here to help!
-            </p>
+            <h2 className="text-2xl font-bold mb-4">{t("faqs.stillHaveQuestions")}</h2>
+            <p className="text-muted-foreground mb-4">{t("faqs.stillHaveQuestionsDescription")}</p>
             <ul className="space-y-2 text-muted-foreground">
-              <li>• Email: support@paymatch.app</li>
-              <li>• Documentation: Check our comprehensive API documentation</li>
-              <li>• Community: Join our developer community for discussions</li>
+              <li>• {t("faqs.supportEmail")}</li>
+              <li>• {t("faqs.supportDocumentation")}</li>
+              <li>• {t("faqs.supportCommunity")}</li>
             </ul>
           </div>
         </div>
